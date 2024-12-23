@@ -1,25 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Job salary ={90000} position=" senior Software Developer" company = "Google" />
+      <Job salary ={80000} position="junior Software Developer" company = "Facebook" />
+      <Job salary ={70000} position="project Manager" company = "Amazon" />
     </div>
   );
 }
+
+ const Job = (props)=>{
+  return (
+    <div>
+      <h1>{props.salary}</h1>
+      <h2>{props.position}</h2>
+      <h3>{props.company}</h3>
+    </div>
+  );
+ }
 
 export default App;
