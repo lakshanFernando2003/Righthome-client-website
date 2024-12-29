@@ -1,0 +1,98 @@
+To-Do List for Starting the Project
+1. Initial Setup
+ Ensure the React project is set up and running using Bun.
+ Install required dependencies:
+react-router-dom for navigation.
+react-select for dropdowns.
+react-dnd for drag-and-drop functionality.
+Any carousel or tab plugins (e.g., react-tabs, react-image-gallery).
+
+2. Create Basic File Structure
+ Organize the project with the following structure:
+
+src/
+├── components/
+│   ├── SearchForm/
+│   ├── Results/
+│   ├── PropertyDetails/
+│   ├── Favorites/
+├── assets/
+│   ├── images/
+│   ├── styles/
+├── data/
+│   ├── properties.json
+├── App.js
+├── index.js
+
+3. Implement Components
+ SearchForm Component:
+Input fields for search filters.
+State management for form inputs.
+ Results Component:
+Render a grid of properties based on search results.
+ PropertyDetails Component:
+Show detailed information, images, and tabs for each property.
+ Favorites Component:
+Display saved properties and enable removal.
+
+4. Data Management
+ Create a properties.json file with:
+Initial 2 properties from the assignment.
+Add 5 more properties for variety.
+ Add logic to fetch and filter data based on search criteria.
+
+5. Add Styling
+ Write basic CSS files for layout and design.
+ Include media queries for responsiveness.
+
+6. Testing and Debugging
+ Test each component separately.
+ Debug layout issues and ensure responsiveness.
+
+
+
+
+// Required File Structure
+
+// src/
+// ├── components/
+// │   ├── SearchBar/
+// │   │   ├── SearchBar.jsx
+// │   │   ├── SearchBar.css
+// │   ├── AdvancedSearch/
+// │   │   ├── AdvancedSearch.jsx
+// │   │   ├── AdvancedSearch.css
+// │   ├── PropertyCard/
+// │   │   ├── PropertyCard.jsx
+// │   │   ├── PropertyCard.css
+// │   ├── Favorites/
+// │   │   ├── Favorites.jsx
+// │   │   ├── Favorites.css
+// │   ├── PropertyDetails/
+// │   │   ├── PropertyDetails.jsx
+// │   │   ├── PropertyDetails.css
+// │   ├── Footer/
+// │   │   ├── Footer.jsx
+// │   │   ├── Footer.css
+// ├── assets/
+// │   ├── images/
+// │   ├── styles/
+// │   │   ├── global.css
+// ├── data/
+// │   ├── properties.json
+// ├── App.js
+// ├── index.js
+
+ .logo-part1, .logo-part2 {
+  font-size: 1.5rem;
+  color: #2c3e50;
+  margin: 4px;
+}
+.logo-part2{
+  margin-left: -0.93rem;
+}
+
+.logo-letter {
+  font-size: 3rem;
+  color: #2c3e50;
+}

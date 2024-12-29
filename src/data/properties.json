@@ -1,0 +1,424 @@
+{
+  "properties": [
+    {
+      "id": "prop1",
+      "name": "Sunny Villa",
+      "type": "Villa",
+      "cardType": "Sale",
+      "bedrooms": 5,
+      "price": 1200000,
+      "rating": 4.5,
+      "views": 1200,
+      "tenure": "Freehold",
+      "description": "Spacious villa with a pool and garden, ideal for families.",
+      "longDescription": "This villa features a luxurious layout with five bedrooms, an expansive pool area, a lush garden, and modern interiors. It includes a state-of-the-art kitchen, multiple living areas, and stunning coastal views.",
+      "location": "Beachside Drive, Brighton",
+      "picture": "/images/villa1.jpg",
+      "url": "properties/villa1.html",
+      "added": {
+        "month": "January",
+        "day": 10,
+        "year": 2023
+      }
+    },
+    {
+      "id": "prop2",
+      "name": "Urban Flat",
+      "type": "Apartment",
+      "cardType": "Rent",
+      "bedrooms": 2,
+      "price": 1500,
+      "rating": 4.2,
+      "views": 800,
+      "tenure": "Leasehold",
+      "description": "Modern flat in the city center with all amenities.",
+      "longDescription": "Located in the heart of the city, this apartment boasts modern interiors, two spacious bedrooms, and convenient access to public transport, shopping, and dining options.",
+      "location": "Downtown City Center, London",
+      "picture": "images/flat1.jpeg",
+      "url": "properties/flat1.html",
+      "added": {
+        "month": "February",
+        "day": 15,
+        "year": 2023
+      }
+    },
+    {
+      "id": "prop3",
+      "name": "Cosy Cottage",
+      "type": "Cottage",
+      "cardType": "Sale",
+      "bedrooms": 3,
+      "price": 400000,
+      "rating": 4.8,
+      "views": 950,
+      "tenure": "Freehold",
+      "description": "Beautiful cottage surrounded by nature and tranquility.",
+      "longDescription": "This charming three-bedroom cottage offers a serene escape with its rustic charm, fireplace, and proximity to picturesque walking trails and nature reserves.",
+      "location": "Countryside Lane, Sussex",
+      "picture": "images/cottage1.jpg",
+      "url": "properties/cottage1.html",
+      "added": {
+        "month": "March",
+        "day": 20,
+        "year": 2023
+      }
+    },
+    {
+      "id": "prop4",
+      "name": "Luxury Penthouse",
+      "type": "Penthouse",
+      "cardType": "Sale",
+      "bedrooms": 4,
+      "price": 1500000,
+      "rating": 4.9,
+      "views": 2000,
+      "tenure": "Leasehold",
+      "description": "Elegant penthouse with panoramic city views.",
+      "longDescription": "Perched atop a skyline tower, this penthouse features luxurious finishes, expansive floor-to-ceiling windows, private terraces, and premium amenities.",
+      "location": "Skyline Towers, London",
+      "picture": "images/penthhouse.jpg",
+      "url": "properties/penthouse1.html",
+      "added": {
+        "month": "April",
+        "day": 5,
+        "year": 2023
+      }
+    },
+    {
+      "id": "prop5",
+      "name": "Family Bungalow",
+      "type": "Bungalow",
+      "cardType": "Rent",
+      "bedrooms": 3,
+      "price": 1000,
+      "rating": 4.0,
+      "views": 600,
+      "tenure": "Freehold",
+      "description": "Comfortable bungalow with a spacious backyard.",
+      "longDescription": "This charming bungalow features a spacious backyard, modern interiors, and is located in a family-friendly neighborhood close to schools and parks.",
+      "location": "Suburban Avenue, Birmingham",
+      "picture": "images/bungalow1.jpg",
+      "url": "properties/bungalow1.html",
+      "added": {
+        "month": "May",
+        "day": 8,
+        "year": 2023
+      }
+    },
+    {
+      "id": "prop6",
+      "name": "Modern Studio",
+      "type": "Studio",
+      "cardType": "Rent",
+      "bedrooms": 1,
+      "price": 800,
+      "rating": 3.8,
+      "views": 400,
+      "tenure": "Leasehold",
+      "description": "Compact studio apartment perfect for singles or students.",
+      "longDescription": "This studio apartment offers a minimalist design with efficient use of space, ideal for individuals or students seeking convenience.",
+      "location": "Central Square, Manchester",
+      "picture": "images/studio1.jpg",
+      "url": "properties/studio1.html",
+      "added": {
+        "month": "June",
+        "day": 25,
+        "year": 2023
+      }
+    },
+    {
+      "id": "prop7",
+      "name": "Country Estate",
+      "type": "Estate",
+      "cardType": "Sale",
+      "bedrooms": 6,
+      "price": 2500000,
+      "rating": 5.0,
+      "views": 3000,
+      "tenure": "Freehold",
+      "description": "Exclusive estate with extensive grounds and modern amenities.",
+      "longDescription": "This expansive estate boasts manicured grounds, a main residence with luxurious amenities, guest houses, and recreational facilities.",
+      "location": "Countryside Drive, Cotswolds",
+      "picture": "images/estate1.jpg",
+      "url": "properties/estate1.html",
+      "added": {
+        "month": "July",
+        "day": 12,
+        "year": 2023
+      }
+    },
+    {
+      "id": "prop8",
+      "name": "Suburban House",
+      "type": "House",
+      "cardType": "Sale",
+      "bedrooms": 4,
+      "price": 650000,
+      "rating": 4.3,
+      "views": 1200,
+      "tenure": "Freehold",
+      "description": "Lovely house in a quiet suburb, perfect for families.",
+      "longDescription": "This suburban house offers a family-friendly layout, a spacious garden, and proximity to schools and local amenities.",
+      "location": "Meadow Lane, Oxford",
+      "picture": "images/house2.jpg",
+      "url": "properties/house2.html",
+      "added": {
+        "month": "August",
+        "day": 15,
+        "year": 2023
+      }
+    },
+    {
+      "id": "prop9",
+      "name": "Seaside Villa",
+      "type": "Villa",
+      "cardType": "Rent",
+      "bedrooms": 4,
+      "price": 2000,
+      "rating": 4.7,
+      "views": 1100,
+      "tenure": "Leasehold",
+      "description": "Relaxing villa with stunning sea views.",
+      "longDescription": "This seaside villa features expansive balconies, direct beach access, and premium interiors for luxurious coastal living.",
+      "location": "Ocean Drive, Cornwall",
+      "picture": "images/villa2.jpg",
+      "url": "properties/villa2.html",
+      "added": {
+        "month": "September",
+        "day": 18,
+        "year": 2023
+      }
+    },
+    {
+      "id": "prop10",
+      "name": "City Apartment",
+      "type": "Apartment",
+      "cardType": "Sale",
+      "bedrooms": 2,
+      "price": 500000,
+      "rating": 4.4,
+      "views": 900,
+      "tenure": "Leasehold",
+      "description": "Stylish apartment in the city center with modern interiors.",
+      "longDescription": "This apartment features a sleek design, spacious rooms, and is situated close to public transport, shopping, and cultural attractions.",
+      "location": "Market Street, Edinburgh",
+      "picture": "images/apartment1.jpg",
+      "url": "properties/apartment1.html",
+      "added": {
+        "month": "October",
+        "day": 20,
+        "year": 2023
+      }
+    },
+    {
+      "id": "prop11",
+      "name": "Hillside Cabin",
+      "type": "Cabin",
+      "cardType": "Rent",
+      "bedrooms": 2,
+      "price": 1200,
+      "rating": 4.1,
+      "views": 1100,
+      "tenure": "Freehold",
+      "description": "Peaceful hillside retreat, perfect for nature lovers.",
+      "longDescription": "Nestled in the hills, this cabin provides a tranquil environment, rustic charm, and close proximity to nature trails.",
+      "location": "Green Hills, Wales",
+      "picture": "images/cabin1.jpg",
+      "url": "properties/cabin1.html",
+      "added": {
+        "month": "December",
+        "day": 5,
+        "year": 2023
+      }
+    },
+    {
+      "id": "prop12",
+      "name": "Urban Loft",
+      "type": "Loft",
+      "cardType": "Sale",
+      "bedrooms": 1,
+      "price": 300000,
+      "rating": 4.6,
+      "views": 700,
+      "tenure": "Leasehold",
+      "description": "Modern loft in the city for young professionals.",
+      "longDescription": "This urban loft offers a stylish open layout, high ceilings, and is located in a vibrant neighborhood with cultural and dining options.",
+      "location": "City Center, Manchester",
+      "picture": "images/loft2.jpg",
+      "url": "properties/loft2.html",
+      "added": {
+        "month": "October",
+        "day": 10,
+        "year": 2023
+      }
+    },
+    {
+      "id": "prop13",
+      "name": "Luxury Townhouse",
+      "type": "Townhouse",
+      "cardType": "Sale",
+      "bedrooms": 3,
+      "price": 800000,
+      "rating": 4.8,
+      "views": 1100,
+      "tenure": "Freehold",
+      "description": "Elegant townhouse in a premium gated community.",
+      "longDescription": "This townhouse offers modern interiors, spacious rooms, a private garden, and access to community amenities such as a pool and gym.",
+      "location": "Royal Drive, London",
+      "picture": "images/townhouse.jpg",
+      "url": "properties/townhouse.html",
+      "added": {
+        "month": "January",
+        "day": 15,
+        "year": 2024
+      }
+    },
+    {
+      "id": "prop14",
+      "name": "Historic Manor",
+      "type": "Manor",
+      "cardType": "Sale",
+      "bedrooms": 8,
+      "price": 5000000,
+      "rating": 5.0,
+      "views": 4200,
+      "tenure": "Freehold",
+      "description": "A majestic historic manor with sprawling grounds and antique interiors.",
+      "longDescription": "This manor exudes historic elegance with its original architecture, grand ballroom, extensive grounds, and antique furnishings.",
+      "location": "Historic Lane, Bath",
+      "picture": "images/manor.jpg",
+      "url": "properties/manor.html",
+      "added": {
+        "month": "November",
+        "day": 25,
+        "year": 2023
+      }
+    },
+    {
+      "id": "prop15",
+      "name": "Eco-Friendly House",
+      "type": "House",
+      "cardType": "Sale",
+      "bedrooms": 4,
+      "price": 450000,
+      "rating": 4.5,
+      "views": 850,
+      "tenure": "Freehold",
+      "description": "Energy-efficient house with solar panels and a green roof.",
+      "longDescription": "This eco-friendly house incorporates solar energy systems, sustainable materials, and a modern design for environmentally conscious living.",
+      "location": "Eco Estate, Bristol",
+      "picture": "images/eco_house.jpg",
+      "url": "properties/eco_house.html",
+      "added": {
+        "month": "September",
+        "day": 12,
+        "year": 2023
+      }
+    },
+    {
+      "id": "prop16",
+      "name": "Luxury Beach House",
+      "type": "Beach House",
+      "cardType": "Rent",
+      "bedrooms": 5,
+      "price": 5000,
+      "rating": 4.9,
+      "views": 2400,
+      "tenure": "Leasehold",
+      "description": "High-end beach house with private access to the shore and infinity pool.",
+      "longDescription": "This luxury beach house offers private beach access, an infinity pool, expansive decks, and a gourmet kitchen for upscale coastal living.",
+      "location": "Sunny Cove, Bournemouth",
+      "picture": "images/beach_house.jpg",
+      "url": "properties/beach_house.html",
+      "added": {
+        "month": "August",
+        "day": 8,
+        "year": 2023
+      }
+    },
+    {
+      "id": "prop17",
+      "name": "Luxury Duplex",
+      "type": "Duplex",
+      "cardType": "Sale",
+      "bedrooms": 3,
+      "price": 650000,
+      "rating": 4.7,
+      "views": 1400,
+      "tenure": "Leasehold",
+      "description": "Spacious duplex with premium interiors and amenities.",
+      "longDescription": "This duplex features a modern design, private balconies, and access to premium facilities, perfect for sophisticated living.",
+      "location": "Premium Towers, Manchester",
+      "picture": "images/duplex.jpg",
+      "url": "properties/duplex.html",
+      "added": {
+        "month": "October",
+        "day": 10,
+        "year": 2023
+      }
+    },
+    {
+      "id": "prop18",
+      "name": "Seaside Cabin",
+      "type": "Cabin",
+      "cardType": "Rent",
+      "bedrooms": 2,
+      "price": 1500,
+      "rating": 4.2,
+      "views": 1000,
+      "tenure": "Leasehold",
+      "description": "Cozy cabin overlooking the sea, perfect for weekend getaways.",
+      "longDescription": "This cabin provides a serene setting with stunning sea views, a cozy interior, and convenient access to local attractions.",
+      "location": "Seaside Retreat, Cornwall",
+      "picture": "images/seaside_cabin.jpg",
+      "url": "properties/seaside_cabin.html",
+      "added": {
+        "month": "June",
+        "day": 14,
+        "year": 2023
+      }
+    },
+    {
+      "id": "prop19",
+      "name": "Green Terrace Flat",
+      "type": "Apartment",
+      "cardType": "Sale",
+      "bedrooms": 2,
+      "price": 350000,
+      "rating": 4.3,
+      "views": 800,
+      "tenure": "Freehold",
+      "description": "Contemporary flat with a terrace and eco-friendly design.",
+      "longDescription": "This flat combines modern living with sustainable features, including energy-efficient appliances and a private terrace.",
+      "location": "Urban Garden, London",
+      "picture": "images/terrace_flat.jpg",
+      "url": "properties/terrace_flat.html",
+      "added": {
+        "month": "May",
+        "day": 5,
+        "year": 2023
+      }
+    },
+    {
+      "id": "prop20",
+      "name": "Lakeview Residence",
+      "type": "House",
+      "cardType": "Sale",
+      "bedrooms": 4,
+      "price": 800000,
+      "rating": 4.8,
+      "views": 1500,
+      "tenure": "Freehold",
+      "description": "Beautiful residence overlooking a serene lake with modern interiors.",
+      "longDescription": "This property offers an exceptional living experience with its serene lake views, spacious interiors, and modern facilities. The house features four bedrooms, a well-equipped kitchen, a beautifully landscaped garden, and a garage. Perfect for families or individuals seeking tranquility combined with convenience.",
+      "location": "Lakefront, Oxford",
+      "picture": "images/lakeview.jpg",
+      "url": "properties/lakeview.html",
+      "added": {
+        "month": "April",
+        "day": 20,
+        "year": 2023
+      }
+    }
+  ]
+}
