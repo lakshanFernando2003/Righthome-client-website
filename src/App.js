@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import SearchBar from "./components/SearchBar/SearchBar";
 import AdvancedSearch from "./components/AdvancedSearch/AdvancedSearch";
 import PropertyContainer from "./components/PropertyContainer/PropertyContainer";
@@ -8,19 +8,46 @@ import "./App.css";
 
 const App = () => {
   const [isFilterVisible, setIsFilterVisible] = useState(false);
-  const [filters, setFilters] = useState({
-    type: "",
-    tenure: "",
-    minPrice: 800,
-    maxPrice: 5000000,
-    bedrooms: "",
-    availability: "",
-    location: "",
-    dateStart: "",
-    dateEnd: "",
+  const [filters, setFilters] = useState(() => {
+    const savedFilters = localStorage.getItem("filters");
+    return savedFilters ? JSON.parse(savedFilters) : {
+      type: "",
+      tenure: "",
+      minPrice: 800,
+      maxPrice: 5000000,
+      minBedrooms: 1,
+      maxBedrooms: 10,
+      postalCode: "",
+      dateStart: "",
+      dateEnd: "",
+    };
   });
-  const [properties, setProperties] = useState(propertiesData.properties);
-  const [favorites, setFavorites] = useState([]);
+
+  const [properties, setProperties] = useState(() => {
+    const savedFavorites = localStorage.getItem("favorites");
+    return savedFavorites ? propertiesData.properties.filter(
+      (prop) => !JSON.parse(savedFavorites).find((fav) => fav.id === prop.id)
+    ) : propertiesData.properties;
+  });
+
+  const [favorites, setFavorites] = useState(() => {
+    const savedFavorites = localStorage.getItem("favorites");
+    return savedFavorites ? JSON.parse(savedFavorites) : [];
+  });
+
+  useEffect(() => {
+    console.group("App Initialized");
+    console.log("Properties loaded:", properties.map((p) => p.name));
+    console.log("Favorites loaded:", favorites.map((f) => f.name));
+    console.log("Filters loaded:", filters);
+    console.groupEnd();
+  }, [favorites, properties, filters]);
+
+  useEffect(() => {
+    localStorage.setItem("filters", JSON.stringify(filters));
+    localStorage.setItem("properties", JSON.stringify(properties));
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+  }, [filters, properties, favorites]);
 
   const toggleFilterVisibility = () => {
     setIsFilterVisible((prev) => !prev);
@@ -29,31 +56,31 @@ const App = () => {
   const handleSearch = (searchParams) => {
     const combinedParams = { ...filters, ...searchParams };
     const filteredProperties = propertiesData.properties.filter((property) => {
+      const propertyDate = new Date(property.added.year, property.added.month - 1, property.added.day);
       return (
         (!combinedParams.query ||
           property.location.toLowerCase().includes(combinedParams.query.toLowerCase()) ||
           property.description.toLowerCase().includes(combinedParams.query.toLowerCase())) &&
-        (!combinedParams.cardType || property.cardType.toLowerCase() === combinedParams.cardType.toLowerCase()) &&
-        (!combinedParams.type || combinedParams.type === "" || property.type.toLowerCase() === combinedParams.type.toLowerCase()) &&
-        (!combinedParams.tenure || combinedParams.tenure === "" || property.tenure.toLowerCase() === combinedParams.tenure.toLowerCase()) &&
+        (!combinedParams.type || property.type?.toLowerCase() === combinedParams.type.toLowerCase()) &&
+        (!combinedParams.tenure || property.tenure?.toLowerCase() === combinedParams.tenure.toLowerCase()) &&
         (!combinedParams.minPrice || property.price >= combinedParams.minPrice) &&
         (!combinedParams.maxPrice || property.price <= combinedParams.maxPrice) &&
-        (!combinedParams.bedrooms || property.bedrooms === parseInt(combinedParams.bedrooms)) &&
-        (!combinedParams.availability || combinedParams.availability === "" || property.availability.toLowerCase() === combinedParams.availability.toLowerCase()) &&
-        (!combinedParams.location || property.location.toLowerCase().includes(combinedParams.location.toLowerCase())) &&
-        (!combinedParams.dateStart ||
-          new Date(property.added.year, property.added.month - 1, property.added.day) >= new Date(combinedParams.dateStart)) &&
-        (!combinedParams.dateEnd ||
-          new Date(property.added.year, property.added.month - 1, property.added.day) <= new Date(combinedParams.dateEnd))
+        (!combinedParams.minBedrooms || property.bedrooms >= combinedParams.minBedrooms) &&
+        (!combinedParams.maxBedrooms || property.bedrooms <= combinedParams.maxBedrooms) &&
+        (!combinedParams.postalCode || property.postalCode?.toLowerCase().includes(combinedParams.postalCode.toLowerCase()) ||
+          property.location?.toLowerCase().includes(combinedParams.postalCode.toLowerCase())) &&
+        (!combinedParams.dateStart || propertyDate >= new Date(combinedParams.dateStart)) &&
+        (!combinedParams.dateEnd || propertyDate <= new Date(combinedParams.dateEnd))
       );
     });
-    setProperties(filteredProperties);
+    setProperties(filteredProperties.filter((property) => !favorites.some((fav) => fav.id === property.id)));
   };
 
   const handleApplyFilters = (appliedFilters) => {
     setFilters(appliedFilters);
     handleSearch(appliedFilters);
     setIsFilterVisible(false);
+    console.log("Filters Applied:", appliedFilters);
   };
 
   const handleClearFilters = () => {
@@ -62,71 +89,86 @@ const App = () => {
       tenure: "",
       minPrice: 800,
       maxPrice: 5000000,
-      bedrooms: "",
-      availability: "",
-      location: "",
+      minBedrooms: 1,
+      maxBedrooms: 10,
+      postalCode: "",
       dateStart: "",
       dateEnd: "",
     });
     setProperties(propertiesData.properties);
+    console.group("Filters Cleared");
+    console.groupEnd();
     alert("Filters cleared successfully!");
   };
 
   const handleCardTypeFilter = (cardType) => {
     const filteredProperties = propertiesData.properties.filter((property) => {
       return (
-        property.cardType.toLowerCase() === cardType.toLowerCase() &&
+        property.cardType?.toLowerCase() === cardType.toLowerCase() &&
         (!filters.type || filters.type === "" || property.type.toLowerCase() === filters.type.toLowerCase()) &&
         (!filters.minPrice || property.price >= filters.minPrice) &&
         (!filters.maxPrice || property.price <= filters.maxPrice) &&
-        (!filters.bedrooms || property.bedrooms === parseInt(filters.bedrooms)) &&
-        (!filters.location || property.location.toLowerCase().includes(filters.location.toLowerCase())) &&
-        (!filters.dateStart ||
-          new Date(property.added.year, property.added.month - 1, property.added.day) >= new Date(filters.dateStart)) &&
-        (!filters.dateEnd ||
-          new Date(property.added.year, property.added.month - 1, property.added.day) <= new Date(filters.dateEnd))
+        (!filters.minBedrooms || property.bedrooms >= filters.minBedrooms) &&
+        (!filters.maxBedrooms || property.bedrooms <= filters.maxBedrooms) &&
+        (!filters.postalCode || property.postalCode?.toLowerCase().includes(filters.postalCode.toLowerCase()) ||
+          property.location?.toLowerCase().includes(filters.postalCode.toLowerCase())) &&
+        (!filters.dateStart || new Date(property.added.year, property.added.month - 1, property.added.day) >= new Date(filters.dateStart)) &&
+        (!filters.dateEnd || new Date(property.added.year, property.added.month - 1, property.added.day) <= new Date(filters.dateEnd))
       );
     });
-    setProperties(filteredProperties);
+    setProperties(filteredProperties.filter((property) => !favorites.some((fav) => fav.id === property.id)));
   };
 
   const handlePropertyTypeFilter = (type) => {
     const filteredProperties = propertiesData.properties.filter((property) => {
       return (
-        property.type.toLowerCase() === type.toLowerCase() &&
-        (!filters.cardType || filters.cardType === "" || property.cardType.toLowerCase() === filters.cardType.toLowerCase()) &&
+        property.type?.toLowerCase() === type.toLowerCase() &&
+        (!filters.cardType || filters.cardType === "" || property.cardType?.toLowerCase() === filters.cardType.toLowerCase()) &&
         (!filters.minPrice || property.price >= filters.minPrice) &&
         (!filters.maxPrice || property.price <= filters.maxPrice) &&
-        (!filters.bedrooms || property.bedrooms === parseInt(filters.bedrooms)) &&
-        (!filters.location || property.location.toLowerCase().includes(filters.location.toLowerCase())) &&
-        (!filters.dateStart ||
-          new Date(property.added.year, property.added.month - 1, property.added.day) >= new Date(filters.dateStart)) &&
-        (!filters.dateEnd ||
-          new Date(property.added.year, property.added.month - 1, property.added.day) <= new Date(filters.dateEnd))
+        (!filters.minBedrooms || property.bedrooms >= filters.minBedrooms) &&
+        (!filters.maxBedrooms || property.bedrooms <= filters.maxBedrooms) &&
+        (!filters.postalCode || property.postalCode?.toLowerCase().includes(filters.postalCode.toLowerCase()) ||
+          property.location?.toLowerCase().includes(filters.postalCode.toLowerCase())) &&
+        (!filters.dateStart || new Date(property.added.year, property.added.month - 1, property.added.day) >= new Date(filters.dateStart)) &&
+        (!filters.dateEnd || new Date(property.added.year, property.added.month - 1, property.added.day) <= new Date(filters.dateEnd))
       );
     });
-    setProperties(filteredProperties);
+    setProperties(filteredProperties.filter((property) => !favorites.some((fav) => fav.id === property.id)));
   };
 
   const handleAddToFavorites = (propertyId) => {
     const selectedProperty = properties.find((property) => property.id === propertyId);
     if (selectedProperty) {
-      setFavorites([...favorites, selectedProperty]);
-      setProperties(properties.filter((property) => property.id !== propertyId));
+      setFavorites((prevFavorites) => [...prevFavorites, selectedProperty]);
+      setProperties((prevProperties) => prevProperties.filter((property) => property.id !== propertyId));
+      console.group("On Adding to Favorites");
+      console.log("Property Added to Favorites:", selectedProperty.name);
+      console.log("property card unmounted :", selectedProperty.name);
+
+      console.groupEnd();
     }
   };
 
   const handleRemoveFavorite = (propertyId) => {
     const removedProperty = favorites.find((property) => property.id === propertyId);
     if (removedProperty) {
-      setProperties([...properties, removedProperty]);
-      setFavorites(favorites.filter((property) => property.id !== propertyId));
+      setFavorites((prevFavorites) => prevFavorites.filter((property) => property.id !== propertyId));
+      setProperties((prevProperties) => [...prevProperties, removedProperty]);
+      console.group("On Removing from Favorites");
+      console.log("Property Removed from Favorites:", removedProperty.name);
+      console.log("property card mounted :", removedProperty.name);
+
+      console.groupEnd();
     }
   };
 
   const handleClearFavorites = () => {
-    setProperties([...properties, ...favorites]);
+    setProperties((prevProperties) => [...prevProperties, ...favorites]);
     setFavorites([]);
+    console.group("On Clearing Favorites");
+    console.log("Favorites Cleared All");
+    console.groupEnd();
   };
 
   const handleDropToFavorites = (event) => {
