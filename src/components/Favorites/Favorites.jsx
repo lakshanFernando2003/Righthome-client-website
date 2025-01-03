@@ -1,7 +1,30 @@
-import React from "react";
+import React, { useEffect, useState  } from "react";
+import PropTypes from "prop-types";
 import "./Favorites.css";
 
 const Favorites = ({ favorites, onRemoveFavorite, onClearFavorites, onDrop }) => {
+  const [initialRender, setInitialRender] = useState(true); // Track initial render
+
+  useEffect(() => {
+    if (!initialRender) {
+      console.group("Favorites Updated");
+      console.log("Updated favorites list:", favorites.map((fav) => fav.name));
+      console.groupEnd();
+    } else {
+      setInitialRender(false); // Skip logging for initial render
+    }
+  }, [favorites ,initialRender]);
+
+  useEffect(() => {
+    return () => {
+      if (!initialRender) {
+      console.group("Favorites Unmounted");
+      console.log("Favorites list before unmount:", favorites.map((fav) => fav.name));
+      console.groupEnd();
+      };
+    };
+  }, [favorites,initialRender]);
+
   const handleDragStart = (event, propertyId) => {
     event.dataTransfer.setData("text", propertyId);
   };
@@ -14,10 +37,7 @@ const Favorites = ({ favorites, onRemoveFavorite, onClearFavorites, onDrop }) =>
     >
       <div className="favorites-header">
         <h3 className="favorites-title">Favorites</h3>
-        <button
-          className="btn btn-clear"
-          onClick={onClearFavorites}
-        >
+        <button className="btn btn-clear" onClick={onClearFavorites}>
           Clear All
         </button>
       </div>
@@ -55,6 +75,13 @@ const Favorites = ({ favorites, onRemoveFavorite, onClearFavorites, onDrop }) =>
       )}
     </div>
   );
+};
+
+Favorites.propTypes = {
+  favorites: PropTypes.array.isRequired,
+  onRemoveFavorite: PropTypes.func.isRequired,
+  onClearFavorites: PropTypes.func.isRequired,
+  onDrop: PropTypes.func.isRequired,
 };
 
 export default Favorites;

@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
 import PropertyCard from "../PropertyCard/PropertyCard";
+import Tabs from '../propertyDetails/Tabs';
 import "./PropertyContainer.css";
 
 const PropertyContainer = ({ properties, onAddToFavorites, onDragStart, onDrop }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const propertiesPerPage = 6;
+  const [initialRender, setInitialRender] = useState(true);
+  const [selectedProperty, setSelectedProperty] = useState(null);
+  const navigate = useNavigate();
 
   const totalPages = Math.ceil(properties.length / propertiesPerPage);
 
@@ -13,6 +18,43 @@ const PropertyContainer = ({ properties, onAddToFavorites, onDragStart, onDrop }
     if (page >= 1 && page <= totalPages) {
       setCurrentPage(page);
     }
+  };
+
+  useEffect(() => {
+    if (initialRender) {
+      console.group("PropertyContainer Mounted");
+      console.log("Initial Properties:", properties.map((p) => p.name));
+      console.groupEnd();
+      setInitialRender(false);
+    }
+
+    return () => {
+      if (!initialRender) {
+        console.group("PropertyContainer Unmounted");
+        console.log("Unmounted with properties:", properties.map((prop) => prop.name));
+        console.groupEnd();
+      }
+    };
+  }, [properties, initialRender]);
+
+  useEffect(() => {
+    if (!initialRender) {
+      console.group("PropertyContainer Updated");
+      console.log("Updated Properties list:", properties.map((p) => p.name));
+      console.groupEnd();
+    }
+  }, [properties, initialRender]);
+
+  const handleViewDetails = (property) => {
+    navigate(`/details/${property}`);
+  };
+
+  const handleImageClick = (property) => {
+    setSelectedProperty(property);
+  };
+
+  const handleCloseTabs = () => {
+    setSelectedProperty(null);
   };
 
   const startIndex = (currentPage - 1) * propertiesPerPage;
@@ -31,9 +73,18 @@ const PropertyContainer = ({ properties, onAddToFavorites, onDragStart, onDrop }
               property={property}
               onAddToFavorites={() => onAddToFavorites(property.id)}
               onDragStart={(e) => onDragStart(e, property.id)}
+              onViewDetails={() => handleViewDetails(property.id)}
+              onImageClick={() => handleImageClick(property)}
             />
           ))}
         </div>
+      )}
+
+      {selectedProperty && (
+        <Tabs
+          property={selectedProperty}
+          onClose={handleCloseTabs}
+        />
       )}
 
       {totalPages > 1 && (

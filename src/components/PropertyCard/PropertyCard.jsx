@@ -1,11 +1,13 @@
 import React from "react";
+import PropTypes from "prop-types";
 import "./PropertyCard.css";
 import { FaBed } from "react-icons/fa";
 import { IoMdStar, IoMdStarHalf, IoMdStarOutline } from "react-icons/io";
-import { GrFormView } from "react-icons/gr";
+import { GoHeartFill } from "react-icons/go";
+import { BsArrowRight } from "react-icons/bs";
+import { MdAddToPhotos } from "react-icons/md";
 
-
-const PropertyCard = ({ property, onAddToFavorites, onDragStart }) => {
+const PropertyCard = ({ property, onAddToFavorites, onDragStart, onViewDetails, onImageClick }) => {
   const {
     picture,
     type,
@@ -17,7 +19,7 @@ const PropertyCard = ({ property, onAddToFavorites, onDragStart }) => {
     rating,
     views,
     cardType,
-    added
+    added,
   } = property;
 
   const renderStars = (rating) => {
@@ -45,35 +47,59 @@ const PropertyCard = ({ property, onAddToFavorites, onDragStart }) => {
       onDragStart={(e) => onDragStart(e, property.id)}
     >
       <div className="card-image-container">
-        <img src={picture} alt={`${name}`} className="property-image" />
+        <img
+          src={picture}
+          alt={`${name}`}
+          className="property-image"
+          onClick={() => onImageClick(property)}
+        />
         <span className={`tag ${cardType.toLowerCase()}`}>{cardType}</span>
+        <span
+          className="favorite-icon"
+          onClick={() => onAddToFavorites(property.id)}
+        >
+          <GoHeartFill className="favorite-filled" />
+        </span>
       </div>
       <div className="property-details">
         <h4 className="property-name">{name}</h4>
         <div className="property-info">
           <span className="property-type">{type}</span>
           <span className="property-bedrooms">
-            <FaBed className="icon-bed" /> {bedrooms} Bedrooms
+            <FaBed className="icon-bed" /> {bedrooms} Beds
           </span>
           <span className="property-rating">{renderStars(rating)}</span>
-          <span className="property-views">
-            <GrFormView className="icon-eye" /> {views} Views
-          </span>
+          <span className="property-views">{views} Views</span>
         </div>
         <p className="property-added-date">Added: {formatDate(added)}</p>
         <p className="property-price">€ {price.toLocaleString()}</p>
         <p className="property-location">{location}</p>
         <p className="property-description">{description.slice(0, 100)}...</p>
-
-        <button
-          className="btn btn-add-favorites"
-          onClick={() => onAddToFavorites(property.id)}
-        >
-          Add to Favorites
-        </button>
+        <div className="property-actions">
+          <button
+            className="btn-view-details"
+            onClick={() => onViewDetails(property)}
+          >
+            Details <BsArrowRight className="view-details-icon" />
+          </button>
+          <button
+            className="btn-add-to-favorites"
+            onClick={() => onAddToFavorites(property.id)}
+          >
+            Add to Favorites <MdAddToPhotos className="view-details-icon" />
+          </button>
+        </div>
       </div>
     </div>
   );
+};
+
+PropertyCard.propTypes = {
+  property: PropTypes.object.isRequired,
+  onAddToFavorites: PropTypes.func.isRequired,
+  onDragStart: PropTypes.func.isRequired,
+  onViewDetails: PropTypes.func.isRequired,
+  onImageClick: PropTypes.func.isRequired,
 };
 
 export default PropertyCard;

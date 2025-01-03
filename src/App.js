@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SearchBar from "./components/SearchBar/SearchBar";
 import AdvancedSearch from "./components/AdvancedSearch/AdvancedSearch";
 import PropertyContainer from "./components/PropertyContainer/PropertyContainer";
+import PropertyDetails from "./components/propertyDetails/PropertyDetails";
 import Favorites from "./components/Favorites/Favorites";
 import propertiesData from "./data/properties.json";
 import "./App.css";
@@ -186,24 +188,30 @@ const App = () => {
   };
 
   return (
-    <div style={{ position: "relative" }} className="app-container">
-      <SearchBar
-        onSearch={handleSearch}
-        toggleFilterVisibility={toggleFilterVisibility}
-        onClearFilters={handleClearFilters}
-        filters={filters}
-        onCardTypeFilter={handleCardTypeFilter}
-        onPropertyTypeFilter={handlePropertyTypeFilter}
-      />
-      {isFilterVisible && (
-        <AdvancedSearch
+    <Router>
+      <Routes>
+          <Route
+            path="/"
+            element={
+      <div style={{ position: "relative" }} className="app-container">
+        <SearchBar
+          onSearch={handleSearch}
+          toggleFilterVisibility={toggleFilterVisibility}
+          onClearFilters={handleClearFilters}
+          filters={filters}
+          onCardTypeFilter={handleCardTypeFilter}
+          onPropertyTypeFilter={handlePropertyTypeFilter}
+        />
+        {isFilterVisible && (
+          <AdvancedSearch
           filters={filters}
           onApplyFilters={handleApplyFilters}
           onClearFilters={handleClearFilters}
           toggleFilterVisibility={toggleFilterVisibility}
         />
-      )}
-      <div className="main-content">
+        )}
+
+        <div className="main-content ">
         <PropertyContainer
           properties={properties}
           onAddToFavorites={handleAddToFavorites}
@@ -217,8 +225,16 @@ const App = () => {
           onDragOver={(event) => event.preventDefault()}
           onDrop={handleDropToFavorites}
         />
+        </div>
       </div>
-    </div>
+    }
+    />
+    <Route
+      path="/details/:id"
+      element={<PropertyDetails properties={properties} />}
+    />
+  </Routes>
+    </Router>
   );
 };
 

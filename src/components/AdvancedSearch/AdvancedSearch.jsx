@@ -9,14 +9,24 @@ const AdvancedSearch = ({ filters, onApplyFilters, onClearFilters, toggleFilterV
   const [localFilters, setLocalFilters] = useState({
     ...filters,
     minPrice: filters.minPrice || 800,
-    maxPrice: filters.maxPrice || 5000000,
+    maxPrice: filters.maxPrice || 2500000,
+    minBedrooms: filters.minBedrooms || 1,
+    maxBedrooms: filters.maxBedrooms || 10,
+    postalCode: filters.postalCode || "",
+    dateStart: filters.dateStart || "",
+    dateEnd: filters.dateEnd || "",
   });
 
   useEffect(() => {
     setLocalFilters({
       ...filters,
       minPrice: filters.minPrice || 800,
-      maxPrice: filters.maxPrice || 5000000,
+      maxPrice: filters.maxPrice || 2500000,
+      minBedrooms: filters.minBedrooms || 1,
+      maxBedrooms: filters.maxBedrooms || 10,
+      postalCode: filters.postalCode || "",
+      dateStart: filters.dateStart || "",
+      dateEnd: filters.dateEnd || "",
     });
   }, [filters]);
 
@@ -29,9 +39,16 @@ const AdvancedSearch = ({ filters, onApplyFilters, onClearFilters, toggleFilterV
     setLocalFilters({ ...localFilters, minPrice: min, maxPrice: max });
   };
 
+  const handleBedroomsChange = (field, value) => {
+    setLocalFilters({ ...localFilters, [field]: parseInt(value, 10) || "" });
+  };
+
   const handleApply = () => {
     if (typeof onApplyFilters === "function") {
       onApplyFilters(localFilters);
+      console.group("Filters Updated");
+      console.log("Filters Applied:", filters);
+      console.groupEnd();
     } else {
       console.error("onApplyFilters is not a function");
     }
@@ -43,10 +60,10 @@ const AdvancedSearch = ({ filters, onApplyFilters, onClearFilters, toggleFilterV
       type: "",
       tenure: "",
       minPrice: 800,
-      maxPrice: 5000000,
-      bedrooms: "",
-      availability: "",
-      location: "",
+      maxPrice: 2500000,
+      minBedrooms: 1,
+      maxBedrooms: 10,
+      postalCode: "",
       dateStart: "",
       dateEnd: "",
     };
@@ -59,14 +76,10 @@ const AdvancedSearch = ({ filters, onApplyFilters, onClearFilters, toggleFilterV
   };
 
   return (
-    <div className="advanced-search-container">
-      <div className="advanced-search-header">
+    <div className="advanced-search-container ">
+      <div className="filter-header d-flex justify-content-between align-items-center">
         <h3>Advanced Filters</h3>
-        <IoClose
-          className="close-icon"
-          onClick={toggleFilterVisibility}
-          style={{ cursor: "pointer" }}
-        />
+        <IoClose className="close-icon" onClick={toggleFilterVisibility} />
       </div>
       <div className="form-grid">
         <div className="form-group">
@@ -84,7 +97,6 @@ const AdvancedSearch = ({ filters, onApplyFilters, onClearFilters, toggleFilterV
             <option value="Villa">Villa</option>
             <option value="Cottage">Cottage</option>
             <option value="Penthouse">Penthouse</option>
-            <option value="Studio">Studio</option>
             <option value="Bungalow">Bungalow</option>
           </select>
         </div>
@@ -109,9 +121,9 @@ const AdvancedSearch = ({ filters, onApplyFilters, onClearFilters, toggleFilterV
           <div className="price-range">
             <Slider
               range
-              min={800}
-              max={5000000}
-              step={1000}
+              min={0}
+              max={2500000}
+              step={200}
               value={[localFilters.minPrice, localFilters.maxPrice]}
               onChange={handlePriceChange}
               className="dual-slider"
@@ -123,6 +135,43 @@ const AdvancedSearch = ({ filters, onApplyFilters, onClearFilters, toggleFilterV
         </div>
 
         <div className="form-group">
+          <label htmlFor="minBedrooms">Bedrooms (Range)</label>
+          <div className="bedrooms-range d-flex gap-2">
+            <input
+              type="number"
+              id="minBedrooms"
+              name="minBedrooms"
+              placeholder="Min"
+              value={localFilters.minBedrooms}
+              onChange={(e) => handleBedroomsChange("minBedrooms", e.target.value)}
+              className="form-control"
+            />
+            <input
+              type="number"
+              id="maxBedrooms"
+              name="maxBedrooms"
+              placeholder="Max"
+              value={localFilters.maxBedrooms}
+              onChange={(e) => handleBedroomsChange("maxBedrooms", e.target.value)}
+              className="form-control"
+            />
+          </div>
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="postalCode">Postal Code / Location</label>
+          <input
+            type="text"
+            id="postalCode"
+            name="postalCode"
+            placeholder="Enter postal code or location"
+            value={localFilters.postalCode}
+            onChange={handleInputChange}
+            className="form-control"
+          />
+        </div>
+
+        <div className="form-group">
           <label htmlFor="dateStart">Date Listed</label>
           <input
             type="date"
@@ -130,7 +179,7 @@ const AdvancedSearch = ({ filters, onApplyFilters, onClearFilters, toggleFilterV
             name="dateStart"
             value={localFilters.dateStart}
             onChange={handleInputChange}
-            className="form-control"
+            className="form-control mb-2"
           />
           <input
             type="date"
@@ -141,54 +190,12 @@ const AdvancedSearch = ({ filters, onApplyFilters, onClearFilters, toggleFilterV
             className="form-control"
           />
         </div>
-
-        <div className="form-group">
-          <label htmlFor="bedrooms">Bedrooms</label>
-          <input
-            type="number"
-            id="bedrooms"
-            name="bedrooms"
-            value={localFilters.bedrooms}
-            onChange={handleInputChange}
-            className="form-control"
-          />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="availability">Availability</label>
-          <select
-            id="availability"
-            name="availability"
-            value={localFilters.availability}
-            onChange={handleInputChange}
-            className="form-control"
-          >
-            <option value="">All</option>
-            <option value="Available">Available</option>
-            <option value="Sold">Sold</option>
-            <option value="Rented">Rented</option>
-          </select>
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="location">Location</label>
-          <input
-            type="text"
-            id="location"
-            name="location"
-            placeholder="Enter a location"
-            value={localFilters.location}
-            onChange={handleInputChange}
-            className="form-control"
-          />
-        </div>
       </div>
-
-      <div className="button-group">
-        <button className="btn btn-primary" onClick={handleApply}>
+      <div className="filter-action">
+        <button className="filter-apply-btn" onClick={handleApply}>
           Apply Filters
         </button>
-        <button className="btn btn-secondary" onClick={handleClear}>
+        <button className="filter-clear-btn" onClick={handleClear}>
           Clear Filters
         </button>
       </div>

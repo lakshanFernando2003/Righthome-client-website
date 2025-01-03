@@ -1,25 +1,30 @@
 .property-card {
   display: flex;
-  flex-direction: row;
-  background-color: #fff;
+  flex-direction: column;
   border: 1px solid #e1e1e1;
-  border-radius: 10px;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
   overflow: hidden;
-  margin: 15px 0;
-  transition: box-shadow 0.3s ease;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  width: auto;
+  height: auto;
+  margin: 5px;
 }
 
 .property-card:hover {
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+  transform: translateY(-5px);
 }
 
 .card-image-container {
+  width: 100%;
+  height: 150px;
   position: relative;
-  width: 35%;
 }
 
 .property-image {
+  cursor: pointer;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -29,12 +34,12 @@
   position: absolute;
   top: 10px;
   left: 10px;
-  background-color: #28a745;
-  color: #fff;
-  font-size: 0.9rem;
+  background-color: #007bff;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 3px;
+  font-size: 0.75rem;
   font-weight: bold;
-  padding: 5px 10px;
-  border-radius: 5px;
   text-transform: uppercase;
 }
 
@@ -46,81 +51,152 @@
   background-color: #ffc107;
 }
 
+.favorite-icon {
+  position: absolute;
+  top: 2px;
+  right: 15px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #dc3545;
+}
+
 .property-details {
-  padding: 15px;
-  flex: 1;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
 }
 
 .property-name {
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: bold;
-  margin-bottom: 10px;
-  color: #2c3e50;
+  color: #333;
+  margin: 0;
 }
 
 .property-info {
   display: flex;
-  gap: 10px;
   flex-wrap: wrap;
-  font-size: 0.9rem;
-  color: #6c757d;
-  margin-bottom: 10px;
+  gap: 10px;
+  font-size: 0.85rem;
+  color: #555;
+  margin-bottom: 5px;
 }
 
 .property-bedrooms,
+.property-type,
 .property-rating,
 .property-views {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 10px;
 }
 
-.icon-bed,
-.icon-star,
-.icon-eye {
-  font-size: 1.1rem;
-  color: #ffc107;
-}
-
-.property-price {
-  font-size: 1.1rem;
-  font-weight: bold;
-  color: #28a745;
-  margin-bottom: 10px;
-}
-
-.property-location {
-  font-size: 0.9rem;
-  color: #6c757d;
-  margin-bottom: 10px;
-}
-
-.property-description {
-  font-size: 0.9rem;
-  color: #6c757d;
-  margin-bottom: 15px;
+.icon-star {
+  color: #f4c150;
 }
 
 .property-added-date {
-  font-size: 0.9rem;
-  color: #6c757d;
-  font-style: italic;
-  margin-bottom: 10px;
+  font-size: 0.75rem;
+  color: #999;
+  margin: 0;
 }
 
-.btn-add-favorites {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: #fff;
-  font-size: 0.9rem;
+.property-price {
+  font-size: 1rem;
   font-weight: bold;
+  color: #28a745;
+  margin-bottom: 4px;
+}
+
+.property-location {
+  font-size: 0.85rem;
+  margin-bottom: 4px;
+  height: 2.2rem;
+  color: #555;
+}
+
+.property-description {
+  font-size: 0.8rem;
+  color: #666;
+  height: 2.2rem;
+  margin: 5px ;
+}
+
+.property-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.btn-view-details {
+  padding: 5px 10px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: white;
+  background-color: #007bff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
-.btn-add-favorites:hover {
+.btn-add-to-favorites  {
+  padding: 5px 10px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: white;
+  background-color: #dc3545;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-view-details:hover {
   background-color: #0056b3;
+}
+
+.btn-add-to-favorites:hover {
+  background-color: #a71d2a;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .property-card {
+    width: 100%;
+  }
+
+  .card-image-container {
+    height: 120px;
+  }
+
+  .property-details {
+    padding: 8px;
+  }
+
+  .btn {
+    padding: 4px 8px;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .property-card {
+    width: 100%;
+  }
+
+  .card-image-container {
+    height: 100px;
+  }
+
+  .property-details {
+    padding: 6px;
+  }
+
+  .btn {
+    padding: 3px 6px;
+    font-size: 0.75rem;
+  }
 }
