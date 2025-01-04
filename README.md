@@ -255,4 +255,96 @@ This project is licensed under the MIT License -  for personal use only for the 
 - All contributors who participated in this project
 
 ---
+
 Developed with ❤️ by Lakshan
+
+## 📋 Checklist and Review
+
+### 1. Search Functionality
+
+| Feature             | Implementation                                      | Status                  | Comments                                              |
+|---------------------|------------------------------------------------------|-------------------------|-------------------------------------------------------|
+| Search by Type      | Filters properties by type (house, flat, any).       | ✅ Correctly Implemented | Included in AdvancedSearch component​AdvancedSearch.   |
+| Search by Price     | Min and Max price range filtering with sliders.      | ✅ Correctly Implemented | Uses rc-slider for a dynamic price range filter​AdvancedSearch. |
+| Search by Bedrooms  | Min and Max bedroom filtering implemented.           | ✅ Correctly Implemented | Input fields for bedroom count are functional​AdvancedSearch. |
+| Search by Date Added| Filters properties by a specific date or range.      | ✅ Correctly Implemented | Date filtering using AdvancedSearch form​AdvancedSearch. |
+| Search by Postcode  | Filters by the first part of a postcode.             | ✅ Correctly Implemented | Input field for postcode search works as expected​AdvancedSearch​properties. |
+
+### 2. Property Data in JSON
+
+| Feature             | Implementation                                      | Status                  | Comments                                              |
+|---------------------|------------------------------------------------------|-------------------------|-------------------------------------------------------|
+| 7 Properties        | Includes 7 diverse properties in properties.json.    | ✅ Correctly Implemented | Covers different types, prices, and locations​properties. |
+| Attributes          | Properties have type, price, bedrooms, bathrooms, and other details. | ✅ Correctly Implemented | Well-structured data file aligns with specifications​properties. |
+
+### 3. Display Search Results
+
+| Feature             | Implementation                                      | Status                  | Comments                                              |
+|---------------------|------------------------------------------------------|-------------------------|-------------------------------------------------------|
+| Image Display       | Displays property images in results.                 | ✅ Correctly Implemented | Uses PropertyCard component​PropertyCard​PropertyContainer. |
+| Short Description   | Shows short descriptions in search results.          | ✅ Correctly Implemented | Part of PropertyCard structure​PropertyCard.          |
+| Price Display       | Displays property price.                             | ✅ Correctly Implemented | Price displayed prominently​PropertyCard​PropertyContainer. |
+
+### 4. Property Details Page
+
+| Feature             | Implementation                                      | Status                  | Comments                                              |
+|---------------------|------------------------------------------------------|-------------------------|-------------------------------------------------------|
+| Large Image & Thumbnails | Displays full image and gallery.                | ✅ Correctly Implemented | Fully functional in PropertyDetails​PropertyDetails.  |
+| Property Information| Includes type, price, and location.                  | ✅ Correctly Implemented | Shown on the property page​PropertyDetails.           |
+| Multiple Images     | 6-8 images available per property.                   | ✅ Correctly Implemented | Provided in properties.json​properties.               |
+| Image Viewer Plugin | Navigation and gallery implemented.                  | ✅ Correctly Implemented | Full gallery with thumbnails available​PropertyDetails. |
+
+### 5. React Tabs for Additional Information
+
+| Feature             | Implementation                                      | Status                  | Comments                                              |
+|---------------------|------------------------------------------------------|-------------------------|-------------------------------------------------------|
+| Long Description    | Displays detailed property description.              | ✅ Correctly Implemented | Handled using the Tabs component​Tabs.                |
+| Floor Plan          | Interactive floor plan view available.               | ✅ Correctly Implemented | Uses zoom and pan for the floor plan​Tabs.            |
+| Google Map          | Map with property location rendered.                 | ✅ Correctly Implemented | Integrated Google Maps with API key​Tabs​security.    |
+
+### 6. Favorites Management
+
+| Feature             | Implementation                                      | Status                  | Comments                                              |
+|---------------------|------------------------------------------------------|-------------------------|-------------------------------------------------------|
+| Add to Favorites (Button) | Allows users to save a property via a button. | ✅ Correctly Implemented | Button functionality exists in Favorites component​Favorites. |
+| Add to Favorites (Drag-and-Drop) | Save properties by dragging to favorites list. | ✅ Correctly Implemented | Drag-and-drop implemented​Favorites.                  |
+| Remove from Favorites (Button) | Allows removing properties from favorites using a button. | ✅ Correctly Implemented | Button functionality works as required​Favorites.     |
+| Remove from Favorites (Drag-and-Drop) | Remove properties by dragging out of favorites. | ✅ Correctly Implemented | Functional drag-out system exists​Favorites.          |
+| Clear Favorites     | Clears all favorites at once.                        | ✅ Correctly Implemented | Clear button implemented​Favorites.                   |
+| Display Favorites   | Displays saved properties on the search page.        | ✅ Correctly Implemented | Shown in the Favorites section​App​Favorites.         |
+
+### 7. Responsive Design
+
+| Feature             | Implementation                                      | Status                  | Comments                                              |
+|---------------------|------------------------------------------------------|-------------------------|-------------------------------------------------------|
+| Media Queries for Responsiveness | Responsive layout for search and results pages. | ✅ Correctly Implemented | Evident in CSS files and structure​App​index.         |
+| Large and Small Layouts | Adaptable design for smaller screens.            | ✅ Correctly Implemented | Hand-written and Bootstrap media queries used​App​index. |
+
+### 8. Aesthetics
+
+| Feature             | Implementation                                      | Status                  | Comments                                              |
+|---------------------|------------------------------------------------------|-------------------------|-------------------------------------------------------|
+| Visual Hierarchy    | Clear headings and structure.                        | ✅ Correctly Implemented | Aligns with design best practices​README.             |
+| Alignment and Grouping | Proper grouping and alignment of UI elements.     | ✅ Correctly Implemented | Consistent layout evident throughout​README.          |
+| Color Scheme        | Consistent and visually appealing color palette.     | ✅ Correctly Implemented | Matches project branding​README.                      |
+| Visual Elements     | Effective use of icons, images, and animations.      | ✅ Correctly Implemented | Used for improved user experience​README.             |
+
+### 9. Security
+
+| Feature             | Implementation                                      | Status                  | Comments                                              |
+|---------------------|------------------------------------------------------|-------------------------|-------------------------------------------------------|
+| Content Security Policy (CSP) | CSP directives added in index.html.        | ✅ Correctly Implemented | Includes meta tags for CSP​index.                     |
+| Sanitization        | User inputs sanitized using utilities.               | ✅ Correctly Implemented | DOMPurify used in sanitize.js​sanitize.               |
+
+### 10. Coding Standards
+
+| Feature             | Implementation                                      | Status                  | Comments                                              |
+|---------------------|------------------------------------------------------|-------------------------|-------------------------------------------------------|
+| Comments            | Code is well-commented for clarity.                  | ✅ Correctly Implemented | Meaningful comments in all files​App​index.           |
+| Indentation         | Consistent indentation throughout.                   | ✅ Correctly Implemented | Enhances code readability​App​index.                  |
+| Naming Conventions  | Uses camelCase and PascalCase appropriately.         | ✅ Correctly Implemented | Aligns with React standards​App​README.               |
+
+### Summary
+
+Correctly Implemented:
+All the key features specified in the coursework are fully implemented and functional.
