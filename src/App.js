@@ -6,6 +6,7 @@ import PropertyContainer from "./components/PropertyContainer/PropertyContainer"
 import PropertyDetails from "./components/propertyDetails/PropertyDetails";
 import Favorites from "./components/Favorites/Favorites";
 import propertiesData from "./data/properties.json";
+import Footer from "./components/Footer/Footer";
 import "./App.css";
 
 const App = () => {
@@ -226,6 +227,7 @@ const App = () => {
           onDrop={handleDropToFavorites}
         />
         </div>
+        <Footer />
       </div>
     }
     />

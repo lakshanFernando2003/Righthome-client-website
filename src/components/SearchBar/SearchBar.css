@@ -21,8 +21,13 @@
   font-weight: bold;
 }
 
+.logo-part2{
+  margin-left: -1.9rem;
+}
+
 .logo-mid {
-  font-size: 3rem;
+  margin-top: -1.3rem;
+  font-size: 5rem;
   color: #007bff;
 }
 

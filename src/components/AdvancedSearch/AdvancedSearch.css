@@ -135,6 +135,7 @@
 
 .bedrooms-range {
   margin-top: 2px;
+  justify-content: space-around;
   display: flex;
   gap: 10px;
 }
