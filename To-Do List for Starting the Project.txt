@@ -1,28 +1,51 @@
+# Right Client Website Project Documentation
+
+## Project Overview
+A real estate property search website with advanced filtering capabilities and property management features.
+
+## File Structure
+The project follows a component-based architecture with separate concerns for styling and data management.
+
+### Key Components
+- SearchBar: Handles basic search functionality
+- AdvancedSearch: Provides detailed filtering options
+- PropertyCard: Displays individual property previews
+- Favorites: Manages saved properties
+- PropertyDetails: Shows comprehensive property information
+- Footer: Contains site-wide footer content
+
+### Assets Organization
+- images/: Stores all project images
+- data/: Holds JSON data files
+
+## Custom Styling
+### Logo Styling
+- Two-part logo design with custom font sizes
+- Color scheme uses #2c3e50
+- Negative margin applied for part 2 for visual alignment
+
+### Slider Component Styling (rc-slider)
+Custom styling for an interactive range slider with:
+- Enhanced touch targets (25px height)
+- Custom track and rail styling
+- Responsive handle design with hover/focus states
+- Consistent border radius (7px)
+- Shadow effects for depth
+- Accessible color scheme
+
+## Development Tasks
+1. File structure implementation
+2. Component development
+3. Data management setup
+4. Styling implementation
+5. Testing and debugging
+
+## Development Status
+Initial setup phase with focus on component architecture and basic styling implementation.
 To-Do List for Starting the Project
-1. Initial Setup
- Ensure the React project is set up and running using Bun.
- Install required dependencies:
-react-router-dom for navigation.
-react-select for dropdowns.
-react-dnd for drag-and-drop functionality.
-Any carousel or tab plugins (e.g., react-tabs, react-image-gallery).
 
 2. Create Basic File Structure
  Organize the project with the following structure:
-
-src/
-├── components/
-│   ├── SearchForm/
-│   ├── Results/
-│   ├── PropertyDetails/
-│   ├── Favorites/
-├── assets/
-│   ├── images/
-│   ├── styles/
-├── data/
-│   ├── properties.json
-├── App.js
-├── index.js
 
 3. Implement Components
  SearchForm Component:
@@ -49,10 +72,134 @@ Add 5 more properties for variety.
  Test each component separately.
  Debug layout issues and ensure responsiveness.
 
+## Dependencies and Libraries
 
+### Core Dependencies
+```bash
+# Create React App with Vite
+npm create vite@latest right-client-website -- --template react
 
+# Core dependencies
+npm install react-router-dom    # For routing
+npm install prop-types         # For type checking
+```
 
-// Required File Structure
+### UI and Styling Dependencies
+```bash
+# UI Components and Icons
+npm install react-icons        # For social media and other icons
+npm install rc-slider          # For price range slider
+npm install @mui/material      # For material UI components
+npm install @emotion/react     # Peer dependency for MUI
+npm install @emotion/styled    # Peer dependency for MUI
+npm install react-zoom-pan-pinch # For image zoom and pan functionality
+
+# Styling
+npm install sass              # For SCSS support
+```
+
+### Animation and Interaction
+```bash
+# Animation Libraries
+npm install framer-motion     # For smooth animations
+npm install react-transition-group  # For component transitions
+
+# Drag and Drop
+npm install react-beautiful-dnd    # For drag and drop functionality
+```
+
+### Form Handling and Validation
+```bash
+# Form Management
+npm install formik            # For form handling
+npm install yup               # For form validation
+```
+
+### Development Dependencies
+```bash
+# Development Tools
+npm install -D eslint         # For code linting
+npm install -D prettier       # For code formatting
+npm install -D vite           # Build tool
+```
+
+### Optional Dependencies
+```bash
+# Additional Features
+npm install react-query       # For data fetching
+npm install axios            # For HTTP requests
+npm install date-fns         # For date formatting
+```
+
+### Additional UI and Interaction Libraries
+```bash
+# Maps and Location
+bun add @react-google-maps/api    # Google Maps integration
+
+# Loading States and Notifications
+bun add react-loading-skeleton    # Content loading placeholders
+bun add react-toastify           # Toast notifications
+
+# Additional Styling
+bun add styled-components        # CSS-in-JS styling
+
+# Enhanced Animations
+bun add react-spring            # Physics-based animations
+bun add @dnd-kit/core          # Modern drag and drop
+```
+
+## Version Information
+```json
+{
+  "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.14.13",
+    "axios": "^1.5.1",
+    "date-fns": "^2.30.0",
+    "formik": "^2.4.5",
+    "framer-motion": "^10.16.4",
+    "prop-types": "^15.8.1",
+    "rc-slider": "^10.3.0",
+    "react": "^18.2.0",
+    "react-beautiful-dnd": "^13.1.1",
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.11.0",
+    "react-query": "^3.39.3",
+    "react-router-dom": "^6.16.0",
+    "react-transition-group": "^4.4.5",
+    "react-zoom-pan-pinch": "^3.1.0",
+    "yup": "^1.3.2",
+    "@react-google-maps/api": "^2.19.2",
+    "react-loading-skeleton": "^3.3.1",
+    "react-spring": "^9.7.3",
+    "react-toastify": "^9.1.3",
+    "styled-components": "^6.0.8",
+    "@dnd-kit/core": "^6.0.8"
+  },
+  "devDependencies": {
+    "eslint": "^8.51.0",
+    "prettier": "^3.0.3",
+    "vite": "^4.4.11"
+  }
+}
+```
+
+## Installation Guide
+1. Clone the repository
+2. Install dependencies:
+```bash
+npm install   # Installs all dependencies
+# or
+npm ci       # Clean install from package-lock.json
+```
+
+3. Start the development server:
+```bash
+npm run dev   # Starts Vite development server
+```
+
+//  File Structure
 
 // src/
 // ├── components/
@@ -83,6 +230,7 @@ Add 5 more properties for variety.
 // ├── App.js
 // ├── index.js
 
+company logo custom styles
  .logo-part1, .logo-part2 {
   font-size: 1.5rem;
   color: #2c3e50;
@@ -98,7 +246,7 @@ Add 5 more properties for variety.
 }
 
 
-
+Custom css for the slider
 /* Custom styles for rc-slider */
 .rc-slider {
   margin: 10px 0;
@@ -147,20 +295,4 @@ Add 5 more properties for variety.
 .rc-slider-mark {
   font-size: 12px;
   color: #444444 !important;
-}
-
-
-.advanced-search-container {
-  position: absolute;
-  top: 6rem;
-  right: 0;
-  margin-right: 2rem;
-  z-index: 1000;
-  width: 350px; /* Reduced the width slightly */
-  max-height: 90vh; /* Ensure it doesn't exceed the viewport height */
-  background: white;
-  border: 1px solid #bcbcbc;
-  border-radius: 8px;
-  padding: 15px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }

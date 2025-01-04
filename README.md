@@ -1,70 +1,243 @@
-# Getting Started with Create React App
+# 🏠 Right Client - Real Estate Property Search
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern real estate property search platform built with React, featuring advanced filtering, drag-and-drop favorites, and responsive design.
 
-## Available Scripts
+## 📋 Table of Contents
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [File Structure](#file-structure)
+- [Dependencies](#dependencies)
+- [Configuration](#configuration)
+- [Contributing](#contributing)
+- [License](#license)
 
-In the project directory, you can run:
+## ✨ Features
+- **Advanced Property Search**
+  - Filter by price, bedrooms, location
+  - Real-time search results
+  - Custom range sliders
+- **Property Management**
+  - Drag-and-drop favorites
+  - Property details view
+  - Save preferences locally
+- **Responsive Design**
+  - Mobile-friendly interface
+  - Adaptive layout
+  - Touch-friendly interactions
 
-### `npm start`
+## 🚀 Installation
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Prerequisites
+- Bun runtime (v1.0.0 or higher)
+- Node.js (v14.0.0 or higher)
+- npm (v6.0.0 or higher)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Steps
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/right-client-website.git
 
-### `npm test`
+# Navigate to project directory
+cd right-client-website
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Install dependencies
+npm install
+bun install
 
-### `npm run build`
+# Start development server
+npm run dev
+bun dev
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 💡 Usage
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. **Search Properties**
+   - Use the search bar for quick searches
+   - Click "Advanced Search" for detailed filters
+   - Apply multiple filters simultaneously
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. **Manage Favorites**
+   - Drag properties to favorites section
+   - Remove from favorites with one click
+   - Clear all favorites at once
 
-### `npm run eject`
+3. **View Property Details**
+   - Click on any property card
+   - View full property information
+   - Access contact details
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 📁 File Structure
+```
+src/
+├── components/
+│   ├── SearchBar/          # Search functionality
+│   ├── AdvancedSearch/     # Advanced filtering
+│   ├── PropertyCard/       # Property display cards
+│   ├── Favorites/          # Favorites management
+│   ├── PropertyDetails/    # Detailed property view
+│   └── Footer/            # Site footer
+├── assets/
+│   └── images/            # Image resources
+├── data/
+│   └── properties.json    # Property data
+└── App.js                 # Main application
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 📚 Dependencies
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Core
+```bash
+# Create React App with Bun
+bun create vite@latest right-client-website -- --template react
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+# Core dependencies
+bun add react-router-dom    # For routing
+bun add prop-types         # For type checking
+```
 
-## Learn More
+### UI and Styling
+```bash
+# UI Components and Icons
+bun add react-icons        # For social media and other icons
+bun add rc-slider          # For price range slider
+bun add @mui/material      # For material UI components
+bun add @emotion/react     # Peer dependency for MUI
+bun add @emotion/styled    # Peer dependency for MUI
+bun add react-zoom-pan-pinch # For image zoom and pan functionality
+bun add @react-google-maps/api # For Google Maps integration
+bun add react-loading-skeleton # For content loading states
+bun add react-toastify    # For toast notifications
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# Styling
+bun add sass              # For SCSS support
+bun add styled-components # For component-level styling
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Animation and Interaction
+```bash
+# Animation Libraries
+bun add framer-motion     # For smooth animations
+bun add react-transition-group  # For component transitions
+bun add react-spring      # For physics-based animations
 
-### Code Splitting
+# Drag and Drop
+bun add react-beautiful-dnd    # For drag and drop functionality
+bun add @dnd-kit/core     # Alternative DnD system
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Form Handling
+```bash
+# Form Management
+bun add formik            # For form handling
+bun add yup               # For form validation
+```
 
-### Analyzing the Bundle Size
+### Development Tools
+```bash
+# Development Dependencies
+bun add -d eslint         # For code linting
+bun add -d prettier       # For code formatting
+bun add -d vite           # Build tool
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Optional Features
+```bash
+# Additional Functionality
+bun add react-query       # For data fetching
+bun add axios            # For HTTP requests
+bun add date-fns         # For date formatting
+```
 
-### Making a Progressive Web App
+## 📦 Version Information
+```json
+{
+  "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.14.13",
+    "axios": "^1.5.1",
+    "date-fns": "^2.30.0",
+    "formik": "^2.4.5",
+    "framer-motion": "^10.16.4",
+    "prop-types": "^15.8.1",
+    "rc-slider": "^10.3.0",
+    "react": "^18.2.0",
+    "react-beautiful-dnd": "^13.1.1",
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.11.0",
+    "react-query": "^3.39.3",
+    "react-router-dom": "^6.16.0",
+    "react-transition-group": "^4.4.5",
+    "react-zoom-pan-pinch": "^3.1.0",
+    "yup": "^1.3.2",
+    "@react-google-maps/api": "^2.19.2",
+    "react-loading-skeleton": "^3.3.1",
+    "react-spring": "^9.7.3",
+    "react-toastify": "^9.1.3",
+    "styled-components": "^6.0.8",
+    "@dnd-kit/core": "^6.0.8"
+  },
+  "devDependencies": {
+    "eslint": "^8.51.0",
+    "prettier": "^3.0.3",
+    "vite": "^4.4.11"
+  }
+}
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## ⚙️ Configuration
 
-### Advanced Configuration
+### Environment Variables
+Create a `.env` file in the root directory:
+```env
+VITE_APP_TITLE=Right Client
+VITE_API_URL=your_api_url_here
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Performance Benefits with Bun
+- Faster installation times
+- Improved development server performance
+- Better dependency management
+- Native TypeScript support
+- Built-in testing capabilities
 
-### Deployment
+### Local Storage
+The application uses local storage for:
+- User preferences
+- Favorite properties
+- Search filters
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## 🤝 Contributing
 
-### `npm run build` fails to minify
+1. Fork the repository
+2. Create a feature branch
+```bash
+git checkout -b feature/NewFeature
+```
+3. Commit changes
+```bash
+git commit -m 'Add NewFeature'
+```
+4. Push to branch
+```bash
+git push origin feature/NewFeature
+```
+5. Test locally
+```bash
+bun test        # Run tests
+bun dev         # Start development server
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 📄 License
+
+This project is licensed under the MIT License -  for personal use only for the project owner - lakshan.
+
+## 🙏 Acknowledgments
+
+- React Icons for the icon library
+- Material-UI for UI components
+- All contributors who participated in this project
+
+---
+Developed with ❤️ by Lakshan
