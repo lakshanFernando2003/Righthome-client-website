@@ -10,7 +10,10 @@ import Footer from "./components/Footer/Footer";
 import "./App.css";
 
 const App = () => {
+  // State to manage filter visibility
   const [isFilterVisible, setIsFilterVisible] = useState(false);
+
+  // State to manage filters, initialized from localStorage if available
   const [filters, setFilters] = useState(() => {
     const savedFilters = localStorage.getItem("filters");
     return savedFilters ? JSON.parse(savedFilters) : {
@@ -26,6 +29,7 @@ const App = () => {
     };
   });
 
+  // State to manage properties, excluding those in favorites
   const [properties, setProperties] = useState(() => {
     const savedFavorites = localStorage.getItem("favorites");
     return savedFavorites ? propertiesData.properties.filter(
@@ -33,11 +37,13 @@ const App = () => {
     ) : propertiesData.properties;
   });
 
+  // State to manage favorite properties, initialized from localStorage if available
   const [favorites, setFavorites] = useState(() => {
     const savedFavorites = localStorage.getItem("favorites");
     return savedFavorites ? JSON.parse(savedFavorites) : [];
   });
 
+  // Log initial state on component mount
   useEffect(() => {
     console.group("App Initialized");
     console.log("Properties loaded:", properties.map((p) => p.name));
@@ -46,16 +52,19 @@ const App = () => {
     console.groupEnd();
   }, [favorites, properties, filters]);
 
+  // Save state to localStorage on changes
   useEffect(() => {
     localStorage.setItem("filters", JSON.stringify(filters));
     localStorage.setItem("properties", JSON.stringify(properties));
     localStorage.setItem("favorites", JSON.stringify(favorites));
   }, [filters, properties, favorites]);
 
+  // Toggle filter visibility
   const toggleFilterVisibility = () => {
     setIsFilterVisible((prev) => !prev);
   };
 
+  // Handle search with combined filters and search parameters
   const handleSearch = (searchParams) => {
     const combinedParams = { ...filters, ...searchParams };
     const filteredProperties = propertiesData.properties.filter((property) => {
@@ -79,6 +88,7 @@ const App = () => {
     setProperties(filteredProperties.filter((property) => !favorites.some((fav) => fav.id === property.id)));
   };
 
+  // Apply filters and update properties
   const handleApplyFilters = (appliedFilters) => {
     setFilters(appliedFilters);
     handleSearch(appliedFilters);
@@ -86,6 +96,7 @@ const App = () => {
     console.log("Filters Applied:", appliedFilters);
   };
 
+  // Clear all filters and reset properties
   const handleClearFilters = () => {
     setFilters({
       type: "",
@@ -104,6 +115,7 @@ const App = () => {
     alert("Filters cleared successfully!");
   };
 
+  // Filter properties by card type
   const handleCardTypeFilter = (cardType) => {
     const filteredProperties = propertiesData.properties.filter((property) => {
       return (
@@ -122,6 +134,7 @@ const App = () => {
     setProperties(filteredProperties.filter((property) => !favorites.some((fav) => fav.id === property.id)));
   };
 
+  // Filter properties by property type
   const handlePropertyTypeFilter = (type) => {
     const filteredProperties = propertiesData.properties.filter((property) => {
       return (
@@ -140,6 +153,7 @@ const App = () => {
     setProperties(filteredProperties.filter((property) => !favorites.some((fav) => fav.id === property.id)));
   };
 
+  // Add property to favorites
   const handleAddToFavorites = (propertyId) => {
     const selectedProperty = properties.find((property) => property.id === propertyId);
     if (selectedProperty) {
@@ -148,11 +162,11 @@ const App = () => {
       console.group("On Adding to Favorites");
       console.log("Property Added to Favorites:", selectedProperty.name);
       console.log("property card unmounted :", selectedProperty.name);
-
       console.groupEnd();
     }
   };
 
+  // Remove property from favorites
   const handleRemoveFavorite = (propertyId) => {
     const removedProperty = favorites.find((property) => property.id === propertyId);
     if (removedProperty) {
@@ -161,11 +175,11 @@ const App = () => {
       console.group("On Removing from Favorites");
       console.log("Property Removed from Favorites:", removedProperty.name);
       console.log("property card mounted :", removedProperty.name);
-
       console.groupEnd();
     }
   };
 
+  // Clear all favorites
   const handleClearFavorites = () => {
     setProperties((prevProperties) => [...prevProperties, ...favorites]);
     setFavorites([]);
@@ -174,6 +188,7 @@ const App = () => {
     console.groupEnd();
   };
 
+  // Handle drop event to add property to favorites
   const handleDropToFavorites = (event) => {
     const propertyId = event.dataTransfer.getData("text");
     if (propertyId) {
@@ -181,6 +196,7 @@ const App = () => {
     }
   };
 
+  // Handle drop event to remove property from favorites
   const handleDropToProperties = (event) => {
     const propertyId = event.dataTransfer.getData("text");
     if (propertyId) {

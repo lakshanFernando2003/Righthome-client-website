@@ -7,19 +7,21 @@ import "./PropertyContainer.css";
 
 const PropertyContainer = ({ properties, onAddToFavorites, onDragStart, onDrop }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const propertiesPerPage = 6;
+  const propertiesPerPage = 6; // cards per page
   const [initialRender, setInitialRender] = useState(true);
   const [selectedProperty, setSelectedProperty] = useState(null);
   const navigate = useNavigate();
 
-  const totalPages = Math.ceil(properties.length / propertiesPerPage);
+  const totalPages = Math.ceil(properties.length / propertiesPerPage); // calculate total pages
 
+  // handle pagination
   const handlePageChange = (page) => {
     if (page >= 1 && page <= totalPages) {
       setCurrentPage(page);
     }
   };
 
+  // Life cycle console logs
   useEffect(() => {
     if (initialRender) {
       console.group("PropertyContainer Mounted");
@@ -45,18 +47,22 @@ const PropertyContainer = ({ properties, onAddToFavorites, onDragStart, onDrop }
     }
   }, [properties, initialRender]);
 
+  // handle property view button
   const handleViewDetails = (property) => {
     navigate(`/details/${property}`);
   };
 
+  // handle to open the tab when clicked on the image
   const handleImageClick = (property) => {
     setSelectedProperty(property);
   };
 
+  // handle to close the tab when clicked on the close icon
   const handleCloseTabs = () => {
     setSelectedProperty(null);
   };
 
+  // render cards according to cards per page
   const startIndex = (currentPage - 1) * propertiesPerPage;
   const displayedProperties = properties.slice(startIndex, startIndex + propertiesPerPage);
 

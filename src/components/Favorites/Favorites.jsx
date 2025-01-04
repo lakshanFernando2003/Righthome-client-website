@@ -5,6 +5,7 @@ import "./Favorites.css";
 const Favorites = ({ favorites, onRemoveFavorite, onClearFavorites, onDrop }) => {
   const [initialRender, setInitialRender] = useState(true); // Track initial render
 
+  // Life CYcle to console logs
   useEffect(() => {
     if (!initialRender) {
       console.group("Favorites Updated");
@@ -15,6 +16,7 @@ const Favorites = ({ favorites, onRemoveFavorite, onClearFavorites, onDrop }) =>
     }
   }, [favorites ,initialRender]);
 
+  // Life CYcle to console logs
   useEffect(() => {
     return () => {
       if (!initialRender) {
@@ -25,6 +27,7 @@ const Favorites = ({ favorites, onRemoveFavorite, onClearFavorites, onDrop }) =>
     };
   }, [favorites,initialRender]);
 
+  // handle drag 
   const handleDragStart = (event, propertyId) => {
     event.dataTransfer.setData("text", propertyId);
   };

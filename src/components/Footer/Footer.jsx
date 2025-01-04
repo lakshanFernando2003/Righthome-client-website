@@ -1,6 +1,7 @@
 import React from 'react';
 import { SlSocialTwitter, SlSocialInstagram, SlSocialLinkedin, SlSocialFacebook } from "react-icons/sl";
 import { FcLike } from "react-icons/fc";
+import { BsGithub } from "react-icons/bs";
 import './Footer.css';
 
 const Footer = () => {
@@ -30,17 +31,20 @@ const Footer = () => {
           <div className="footer-section">
             <h4>Connect With Us</h4>
             <div className="social-links">
-              <a href="https://facebook.com/rightclient" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+              <a href="https://www.facebook.com/profile.php?id=100083272787172&mibextid=ZbWKwL" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
                 <SlSocialFacebook className="social-icon" />
               </a>
-              <a href="https://twitter.com/rightclient" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+              <a href="https://twitter.com/Mrpro93809286" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
                 <SlSocialTwitter className="social-icon" />
               </a>
-              <a href="https://instagram.com/rightclient" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <a href="https://www.instagram.com/_laksh__an_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                 <SlSocialInstagram className="social-icon" />
               </a>
-              <a href="https://linkedin.com/company/rightclient" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <a href="https://lk.linkedin.com/in/lakshan-fernando-770037294 " target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                 <SlSocialLinkedin className="social-icon" />
+              </a>
+              <a href="https://github.com/lakshanFernando2003/Righthome-client-website.git " target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                <BsGithub className="social-icon" />
               </a>
             </div>
           </div>

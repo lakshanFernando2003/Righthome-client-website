@@ -9,6 +9,7 @@ const Maps = ({ latitude, longitude, zoom = 15, markerTitle, width , height }) =
   const sanitizedLng = sanitizeNumber(longitude);
   const sanitizedTitle = sanitizeString(markerTitle);
 
+  // map render styles
   const mapContainerStyle = {
     width: width ,
     height: height,
@@ -22,7 +23,7 @@ const Maps = ({ latitude, longitude, zoom = 15, markerTitle, width , height }) =
   };
 
   const { isLoaded, loadError } = useJsApiLoader({
-    googleMapsApiKey: "AIzaSyAGW-7hz-HCQlgiYUFZ9YQDqcsAhKSIx9c",
+    googleMapsApiKey: "AIzaSyAGW-7hz-HCQlgiYUFZ9YQDqcsAhKSIx9c", // Api key
   });
 
   if (loadError) {
@@ -34,6 +35,7 @@ const Maps = ({ latitude, longitude, zoom = 15, markerTitle, width , height }) =
   }
 
   return (
+    // calling the map
     <div style={mapWrapperStyle}>
       <GoogleMap
         mapContainerStyle={mapContainerStyle}

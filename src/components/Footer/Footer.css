@@ -137,12 +137,18 @@
   opacity: 0.8;
 }
 
+/* for tab devices */
 @media (max-width: 900px) {
   .footer-sections-container {
     grid-template-columns: repeat(2, 1fr);
   }
+  .footer-section {
+    padding-left: 0rem !important;
+    text-align: center;
+  }
 }
 
+/* for mobile devices */
 @media (max-width: 600px) {
   .footer {
     padding: 2rem 0 1rem;
@@ -154,6 +160,7 @@
   }
 
   .footer-section {
+    padding-left: 0rem;
     text-align: center;
   }
 

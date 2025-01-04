@@ -5,7 +5,9 @@ import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 import { IoClose } from "react-icons/io5";
 
-const AdvancedSearch = ({ filters, onApplyFilters, onClearFilters, toggleFilterVisibility }) => {
+const AdvancedSearch = ({ filters, onApplyFilters, onClearFilters, toggleFilterVisibility }) => { // functions are set to the parameters
+
+  // filter default values
   const [localFilters, setLocalFilters] = useState({
     ...filters,
     minPrice: filters.minPrice || 800,
@@ -30,6 +32,7 @@ const AdvancedSearch = ({ filters, onApplyFilters, onClearFilters, toggleFilterV
     });
   }, [filters]);
 
+  // handle all inputs and set each filters respectively
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setLocalFilters({ ...localFilters, [name]: value });
@@ -43,6 +46,7 @@ const AdvancedSearch = ({ filters, onApplyFilters, onClearFilters, toggleFilterV
     setLocalFilters({ ...localFilters, [field]: parseInt(value, 10) || "" });
   };
 
+  // update filters when user clicks apply
   const handleApply = () => {
     if (typeof onApplyFilters === "function") {
       onApplyFilters(localFilters);
@@ -55,6 +59,7 @@ const AdvancedSearch = ({ filters, onApplyFilters, onClearFilters, toggleFilterV
     alert("Filters successfully applied!");
   };
 
+  // update filters when user clicks reset
   const handleClear = () => {
     const clearedFilters = {
       type: "",
@@ -75,11 +80,12 @@ const AdvancedSearch = ({ filters, onApplyFilters, onClearFilters, toggleFilterV
     }
   };
 
+  // advance search menu structure
   return (
     <div className="advanced-search-container ">
       <div className="filter-header d-flex justify-content-between align-items-center">
         <h3>Advanced Filters</h3>
-        <IoClose className="close-icon" onClick={toggleFilterVisibility} />
+        <IoClose className="close-icon" onClick={toggleFilterVisibility} /> {/* Toggle function close button */}
       </div>
       <div className="form-grid">
         <div className="form-group">

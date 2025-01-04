@@ -9,6 +9,7 @@ A modern real estate property search platform built with React, featuring advanc
 - [File Structure](#file-structure)
 - [Dependencies](#dependencies)
 - [Configuration](#configuration)
+- [Coding Standards and Aesthetics](#coding-standards-and-aesthetics)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -207,6 +208,20 @@ The application uses local storage for:
 - User preferences
 - Favorite properties
 - Search filters
+
+## 🖥️ Coding Standards and Aesthetics
+
+### Coding Standards
+- **Comments**: Ensure to use meaningful comments throughout the code to explain the purpose of complex logic and functions.
+- **Indentation**: Use consistent indentation (2 spaces or 4 spaces) throughout the project to enhance readability.
+- **Naming Conventions**: Use camelCase for variables and functions, PascalCase for React components, and UPPER_SNAKE_CASE for constants.
+- **Code Structure**: Organize code into logical sections and use appropriate file structures to maintain modularity and reusability.
+
+### Aesthetics
+- **Visual Hierarchy**: Ensure a clear visual hierarchy in the UI to guide users' attention to important elements.
+- **Alignment and Grouping**: Maintain proper alignment and grouping of UI elements to create a clean and organized layout.
+- **Color Scheme**: Use a consistent color scheme throughout the application to enhance visual coherence and user experience.
+- **Visual Elements**: Utilize visual elements such as icons, images, and animations effectively to improve the overall aesthetics and usability of the application.
 
 ## 🤝 Contributing
 

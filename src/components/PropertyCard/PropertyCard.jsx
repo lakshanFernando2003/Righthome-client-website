@@ -8,6 +8,7 @@ import { BsArrowRight } from "react-icons/bs";
 import { MdAddToPhotos } from "react-icons/md";
 
 const PropertyCard = ({ property, onAddToFavorites, onDragStart, onViewDetails, onImageClick }) => {
+  // setting details of properties in to variables
   const {
     picture,
     type,
@@ -22,6 +23,7 @@ const PropertyCard = ({ property, onAddToFavorites, onDragStart, onViewDetails, 
     added,
   } = property;
 
+  // render ranting stars
   const renderStars = (rating) => {
     const stars = [];
     for (let i = 1; i <= 5; i++) {
@@ -36,6 +38,7 @@ const PropertyCard = ({ property, onAddToFavorites, onDragStart, onViewDetails, 
     return stars;
   };
 
+   // formate date 
   const formatDate = (added) => {
     return `${added.day}/${added.month}/${added.year}`;
   };

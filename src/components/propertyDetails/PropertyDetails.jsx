@@ -12,6 +12,7 @@ import { IoIosBed } from "react-icons/io";
 import { GiBathtub } from "react-icons/gi";
 import "./PropertyDetails.css";
 
+// PropertyDetails component to display detailed information about a property
 const PropertyDetails = ({ properties }) => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -22,6 +23,7 @@ const PropertyDetails = ({ properties }) => {
   const [isMapOpen, setIsMapOpen] = useState(false);
   const [isFullScreen, setIsFullScreen] = useState(false);
 
+  // Fetch property details based on ID
   useEffect(() => {
     const selectedProperty = properties.find((prop) => prop.id === id);
     if (selectedProperty) {
@@ -32,6 +34,7 @@ const PropertyDetails = ({ properties }) => {
     }
   }, [id, properties, navigate]);
 
+  // Auto-slide images every 5 seconds
   useEffect(() => {
     if (property?.pictures?.length) {
       const timer = setInterval(() => {
@@ -63,6 +66,7 @@ const PropertyDetails = ({ properties }) => {
     tenure,
   } = property;
 
+  // Render star rating
   const renderStars = (rating) => {
     const stars = [];
     for (let i = 1; i <= 5; i++) {
@@ -77,20 +81,24 @@ const PropertyDetails = ({ properties }) => {
     return stars;
   };
 
+  // Handle next image in gallery
   const handleNextImage = () => {
     setCurrentImageIndex((prevIndex) => (prevIndex + 1) % pictures.length);
   };
 
+  // Handle previous image in gallery
   const handlePreviousImage = () => {
     setCurrentImageIndex((prevIndex) =>
       prevIndex === 0 ? pictures.length - 1 : prevIndex - 1
     );
   };
 
+  // Format date
   const formatDate = (dateObject) => {
     return `${dateObject.day}/${dateObject.month}/${dateObject.year}`;
   };
 
+  // Render gallery section
   const renderGallerySection = () => {
     return (
       <div className="gallery-section">
@@ -131,6 +139,7 @@ const PropertyDetails = ({ properties }) => {
     );
   };
 
+  // Render overview section
   const renderOverviewSection = () => {
     return (
       <div className="property-overview">
@@ -249,7 +258,7 @@ const PropertyDetails = ({ properties }) => {
               zoom={15}
               markerTitle={location}
               width="100%"
-              height="800px"
+              height="600px"
             />
           </div>
         </div>

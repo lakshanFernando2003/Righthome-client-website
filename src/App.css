@@ -26,3 +26,18 @@
   width: 25%;
   margin-left: 20px;
 }
+
+@media (max-width: 768px) {
+  .main-content {
+    flex-direction: column;
+  }
+
+  .property-container, .favorites-section {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .favorites-section {
+    margin-top: 20px;
+  }
+}
