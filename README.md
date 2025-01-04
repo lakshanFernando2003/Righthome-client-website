@@ -37,7 +37,7 @@ A modern real estate property search platform built with React, featuring advanc
 ### Steps
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/right-client-website.git
+git clone https://github.com/lakshanFernando2003/Righthome-client-website.git
 
 # Navigate to project directory
 cd right-client-website
