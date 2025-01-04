@@ -1,3 +1,14 @@
+:root {
+  --primary-font: 'Roboto', sans-serif;
+  --secondary-font: 'Open Sans', sans-serif;
+  --primary-color: #007bff;
+  --secondary-color: #ffc107;
+  --success-color: #28a745;
+  --danger-color: #dc3545;
+  --light-color: #f5f5f5;
+  --dark-color: #333;
+}
+
 .tabs-container {
   position: fixed;
   top: 0;
@@ -8,6 +19,7 @@
   z-index: 1000;
   display: flex;
   flex-direction: column;
+  font-family: var(--primary-font);
 }
 
 .tabs-header {
@@ -39,7 +51,7 @@
 }
 
 .tab-button.active {
-  background-color: #007bff;
+  background-color: var(--primary-color);
   color: white;
 }
 
@@ -52,7 +64,7 @@
   background: none;
   border: none;
   cursor: pointer;
-  color: #dc3545;
+  color: var(--danger-color);
   transition: color 0.3s ease;
 }
 

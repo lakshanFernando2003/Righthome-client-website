@@ -1,3 +1,14 @@
+:root {
+  --primary-font: 'Roboto', sans-serif;
+  --secondary-font: 'Open Sans', sans-serif;
+  --primary-color: #007bff;
+  --secondary-color: #ffc107;
+  --success-color: #28a745;
+  --danger-color: #dc3545;
+  --light-color: #f5f5f5;
+  --dark-color: #333;
+}
+
 .property-card {
   display: flex;
   flex-direction: column;
@@ -10,6 +21,7 @@
   width: auto;
   height: auto;
   margin: 5px;
+  font-family: var(--primary-font);
 }
 
 .property-card:hover {
@@ -72,6 +84,7 @@
   font-weight: bold;
   color: #333;
   margin: 0;
+  font-family: var(--secondary-font);
 }
 
 .property-info {
@@ -105,7 +118,7 @@
 .property-price {
   font-size: 1rem;
   font-weight: bold;
-  color: #28a745;
+  color: var(--success-color);
   margin-bottom: 4px;
 }
 
@@ -136,7 +149,7 @@
   font-size: 0.85rem;
   font-weight: bold;
   color: white;
-  background-color: #007bff;
+  background-color: var(--primary-color);
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -148,7 +161,7 @@
   font-size: 0.85rem;
   font-weight: bold;
   color: white;
-  background-color: #dc3545;
+  background-color: var(--danger-color);
   border: none;
   border-radius: 5px;
   cursor: pointer;

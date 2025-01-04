@@ -38,7 +38,7 @@ const PropertyCard = ({ property, onAddToFavorites, onDragStart, onViewDetails, 
     return stars;
   };
 
-   // formate date 
+   // formate date
   const formatDate = (added) => {
     return `${added.day}/${added.month}/${added.year}`;
   };
