@@ -252,7 +252,7 @@ This project is licensed under the MIT License -  for personal use only for the 
 
 - React Icons for the icon library
 - Material-UI for UI components
-- All contributors who participated in this project
+
 
 ---
 
